@@ -1,0 +1,18 @@
+name: root
+children:
+  - name: a
+    children:
+      - name: b
+        children:
+          - name: c
+            size: 1
+      - name: e
+        size: 2
+  - name: f
+    children:
+      - name: g
+        children:
+          - name: h
+            size: 3
+      - name: i
+        size: 4

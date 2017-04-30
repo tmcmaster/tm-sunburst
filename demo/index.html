@@ -1,28 +1,31 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>tm-sunburst-html demo</title>
+    <title>Demo Application</title>
+    <meta name="description" content="Demo Application">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../tm-sunburst-html.html">
+    <!-- Chrome / Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
+    <!-- Safari / iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+
+    <!-- Web Components -->
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../tm-sunburst.html">
   </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic tm-sunburst-html demo</h3>
-      <demo-snippet>
-        <template>
-          <tm-sunburst-html></tm-sunburst-html>
-        </template>
-      </demo-snippet>
-    </div>
+  <body unresolved>
+    <tm-sunburst></tm-sunburst>
   </body>
 </html>

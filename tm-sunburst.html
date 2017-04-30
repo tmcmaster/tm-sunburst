@@ -1,34 +1,202 @@
-<link rel="import" href="../polymer/polymer.html">
-
-<!--
-`tm-sunburst-html`
-
-
-@demo demo/index.html 
--->
+<link rel="import" href="elements.html">
 
 <dom-module id="tm-sunburst">
   <template>
     <style>
       :host {
         display: block;
+        display: inline-block;
+        min-width:1500px;
+      }
+      #chart {
+        position:relative;
+      }
+      paper-card {
+        vertical-align: top;
+        padding:10px;
+        width:325px;
+        height:140px;
+      }
+      div.fields {
+        position:absolute;
+        top: 240px;
+        left: 775px;
+        vertical-align: top;
+        display: inline-block;
+        //border: solid red 1px;
+        width: 200px;
+        height: 200px;
+      }
+      div.fields > div {
+        font-size: 12px;
+        width:100%;
+        //border: solid blue 1px;
+        text-align: center;
+      }
+      div.age {
+        padding-top: 13px;
+      }
+      paper-slider {
+        width: 100%;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <iron-ajax auto url="data/decision-tree.json" handle-as="json" last-response="{{decisionTree}}"></iron-ajax>
+    <!-- <iron-ajax id="data" url="data/testing4.json" handle-as="json" last-response="{{data}}"></iron-ajax> -->
+    <iron-ajax auto url="data/values.json" handle-as="json" last-response="{{values}}"></iron-ajax>
+    <iron-ajax auto url="data/fields.json" handle-as="json" last-response="{{fields}}"></iron-ajax>
+
+    <h2>Polymer Sunburst</h2>
+    <paper-card>
+      <div class="age">
+        <label>ANB: </label><span>{{age}}</span>
+      </div>
+      <paper-slider min="16" max="65" value="{{age}}"></paper-slider>
+      <paper-input label="Value" value="{{value}}"></paper-input>
+    </paper-card>
+    <paper-card>
+        <paper-input label="Policy Number" value="{{state.policyNumber}}"></paper-input>
+        <paper-input label="Divison" value="{{state.divison}}"></paper-input>
+    </paper-card>
+    <paper-card>
+        <paper-input label="Category" value="{{state.category}}"></paper-input>
+        <paper-input label="Occupation" value="{{state.occupation}}"></paper-input>
+    </paper-card>
+    <paper-card>
+        <paper-input label="Waiting Period" value="{{state.waitingPeriod}}"></paper-input>
+        <paper-input label="Benefit Period" value="{{state.benefitPeriod}}"></paper-input>
+    </paper-card>
+    <paper-card>
+        <paper-input label="Cover Type / Rating Basis" value="{{state.coverType}}"></paper-input>
+        <paper-input label="Policy Period Year" value="{{state.policyPeriod}}"></paper-input>
+    </paper-card>
+
+    <div id="main">
+      <div id="sequence"></div>
+      <div id="chart">
+        <div class="fields">
+          <template is="dom-repeat" items="[[fields]]">
+            <div>[[item]]</div>
+          </template>
+        </div>
+      </div>
+    </div>
   </template>
-
+  <script src="sequences.js"></script>
   <script>
-    Polymer({
+   (function(Polymer,d3) {
 
-      is: 'tm-sunburst',
+     // https://designschool.canva.com/blog/100-color-combinations/
+     var colors = {
+       "G2986": "#F98866",
+       "G3439": "#FF420E",
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'tm-sunburst',
+       "1": "#80BD9E",
+       "2": "#89DA59",
+       "3": "#80BD9E",
+       "n/a": "#89DA59",
+
+       "A": "#90AFC5",
+       "B": "#336B87",
+       "C": "#90AFC5",
+       "D": "#336B87",
+       "E": "#90AFC5",
+       "F": "#336B87",
+       "G": "#90AFC5",
+       "All Categories": "#336B87",
+       "All categories": "#336B87",
+       "A, B,C": "#90AFC5",
+       "D": "#336B87",
+
+       "All Occupations": "#9A9EAB",
+
+       "14 days": "#ACD0C0",
+       "30, 60 or 90 days": "#763626",
+       "30, 60 or 90 days + 2 years": "#ACD0C0",
+
+       "104 weeks": "#505160",
+       "To age 65": "#68829E",
+
+       "Default Cover (per week)": "#AEBD38",
+       "Voluntary Cover per week": "#598234",
+       "Voluntary Cover per month": "#AEBD38",
+       "Default Cover per month": "#598234",
+
+       "1": "#F4CC70",
+       "2": "#DE7A22",
+       "3": "#F4CC70",
+       "All": "#DE7A22",
+       "Effective 1/4/2016": "#F4CC70"
+     };
+
+      Polymer({
+        is: 'tm-sunburst',
+        properties: {
+          decisionTree: { type: Object, notify:true },
+          values: { type: Object, notify:true },
+          key: { type: String, notify:true },
+          age: { type:Number, notify:true },
+          fields: { type:Array, notify:true },
+          state: { type:Object, notify:true, value: {} },
+          data: { type: Object, notify:true, computed: '_decisionTreeUpdated(decisionTree)' },
+          value: { type: String, notify:true, computed: '_computeValue(age,key)' }
         },
-      },
+        observers: [
+          '_debug(value)',
+          '_dataUpdated(data)',
+          '_computeState(key)'
+          //'_decisionTreeUpdated(decisionTree)'
+        ],
+        _computeState: function(key) {
+          const keyParts = key.split(' | ');
+          this.set('state.policyNumber', keyParts[0]);
+          this.set('state.divison', keyParts[1]);
+          this.set('state.category', keyParts[2]);
+          this.set('state.occupation', keyParts[3]);
+          this.set('state.waitingPeriod', keyParts[4]);
+          this.set('state.benefitPeriod', keyParts[5]);
+          this.set('state.coverType', keyParts[6]);
+          this.set('state.policyPeriod', keyParts[7]);
+        },
+        _computeValue: function(age,key) {
+          const combinedKey = age + ' | ' + key;
+          const value = this.values[combinedKey];
+          return value;
+        },
+        _decisionTreeUpdated: function(decisionTree) {
+          console.log('DECISION TREE: ', decisionTree);
+          const sunburstData = convertDecisionTreeToSunBurstData("root", decisionTree, 0);
+          console.log('SUNBURST DATA: ', sunburstData);
+          console.log('SUNBURST JSON: ' + JSON.stringify(sunburstData));
+          return sunburstData;
+        },
+        _dataUpdated: function(data) {
+          console.log('---->>> ', data);
+          const self = this;
+          createStarburst(data, colors, function(key) {
+            self.key = key;
+          });
+        },
+        _debug: function(object) {
+          console.log('DEBUG TM-STARBURST: ', object);
+        },
+        ready: function() {
+          console.log('Created element tm-sunburst.');
+          this.$.data.generateRequest();
+        }
+      });
 
-    });
+      function convertDecisionTreeToSunBurstData(nodeName, decisionTree, depth) {
+        const nodeChildren = Object.keys(decisionTree)
+                                .map(key => convertDecisionTreeToSunBurstData(key, decisionTree[key],depth+1));
+        const sunburstData = {
+          name: nodeName,
+          children: nodeChildren,
+          size:1,
+          depth:depth
+        };
+        return sunburstData;
+      }
+    })(Polymer,d3)
   </script>
 </dom-module>

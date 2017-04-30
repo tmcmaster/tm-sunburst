@@ -2,7 +2,12 @@
   "name": "tm-sunburst-html",
   "main": "tm-sunburst-html.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "polymer": "Polymer/polymer#^1.4.0",
+    "bower": "*",
+    "install": "^1.0.4",
+    "d3": "v3.4.13",
+    "iron-elements": "^1.0.10",
+    "paper-elements": "^1.0.7"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
