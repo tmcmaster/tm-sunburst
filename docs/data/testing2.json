@@ -1,0 +1,352 @@
+{
+  "name": "root",
+  "children": [
+  {
+    "name": "G2986",
+    "children": [
+    {
+      "name": "n/a",
+      "children": [
+      {
+        "name": "A, B,C",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "30, 60 or 90 days + 2 years",
+            "children": [
+            {
+              "name": "To age 65",
+              "children": [
+              {
+                "name": "Voluntary Cover per month",
+                "children": [
+                {
+                  "name": "All",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "D",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "30, 60 or 90 days + 2 years",
+            "children": [
+            {
+              "name": "To age 65",
+              "children": [
+              {
+                "name": "Voluntary Cover per week",
+                "children": [
+                {
+                  "name": "Effective 1/4/2016",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name": "G3439",
+    "children": [
+    {
+      "name": "1",
+      "children": [
+      {
+        "name": "A",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "B",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "C",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "D",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "E",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "F",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "G",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover (per week)",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "All categories",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "14 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Voluntary Cover per week",
+                "children": [
+                {
+                  "name": "1",
+                  "children": []
+                },
+                {
+                  "name": "2",
+                  "children": []
+                },
+                {
+                  "name": "3",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name": "2",
+      "children": [
+      {
+        "name": "All Categories",
+        "children": [
+        {
+          "name": "All Occupations",
+          "children": [
+          {
+            "name": "30, 60 or 90 days",
+            "children": [
+            {
+              "name": "104 weeks",
+              "children": [
+              {
+                "name": "Default Cover per month",
+                "children": [
+                {
+                  "name": "All",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  }]
+}

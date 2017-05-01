@@ -1,0 +1,30 @@
+{
+  "name": "root",
+  "children": [
+    {
+      "name": "G2986",
+      "children": [
+        {
+          "name": "1",
+          "children": [],
+          "size": 1
+        },
+        {
+          "name": "2",
+          "children": [],
+          "size": 1
+        }
+      ]
+    },
+    {
+      "name": "G3439",
+      "children": [
+        {
+          "name": "n/a",
+          "children": [],
+          "size": 1
+        }
+      ]
+    }
+  ]
+}
