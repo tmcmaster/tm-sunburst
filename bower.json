@@ -1,6 +1,6 @@
 {
-  "name": "tm-sunburst-html",
-  "main": "tm-sunburst-html.html",
+  "name": "tm-sunburst",
+  "main": "tm-sunburst.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "bower": "*",
