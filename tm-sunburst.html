@@ -6,10 +6,18 @@
       :host {
         display: block;
         display: inline-block;
-        min-width:1500px;
+        width:1750px;
+        height: 600px;
+        //border:solid red 1px;
       }
       #chart {
         position:relative;
+        display:inline-block;
+        width:1750px;
+        height: 600px;
+      }
+      #sequence {
+        display:inline-block;
       }
       paper-card {
         vertical-align: top;
@@ -20,6 +28,7 @@
       div.fields {
         position:absolute;
         top: 240px;
+        //left: 275px;
         left: 775px;
         vertical-align: top;
         display: inline-block;
@@ -82,7 +91,7 @@
       </div>
     </div>
   </template>
-  <script src="sequences.js"></script>
+  <script src="js/sequences.js"></script>
   <script>
    (function(Polymer,d3) {
 
@@ -132,6 +141,7 @@
       Polymer({
         is: 'tm-sunburst',
         properties: {
+          orientation: { type:String, notify:true, value: "horizontal" },
           decisionTree: { type: Object, notify:true },
           values: { type: Object, notify:true },
           key: { type: String, notify:true },
@@ -173,7 +183,12 @@
         _dataUpdated: function(data) {
           console.log('---->>> ', data);
           const self = this;
-          createStarburst(data, colors, function(key) {
+          createStarburst(data, {
+            colors: colors,
+            width: this.clientWidth,
+            height: this.clientHeight,
+            breadcrumb: this.orientation
+          }, function(key) {
             self.key = key;
           });
         },

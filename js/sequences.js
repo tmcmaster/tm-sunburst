@@ -1,8 +1,10 @@
-function createStarburst(data, colors, setKeyCallback) {
+function createStarburst(data, options, setKeyCallback) {
   // Dimensions of sunburst.
-  var width = 1750;
-  var height = 600;
+  var width = options.width;
+  var height = options.height;
   var radius = Math.min(width, height) / 2;
+  var colors = options.colors;
+  var breadcrumbOrientation = options.breadcrumb;
 
   // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
   var b = {
@@ -194,10 +196,14 @@ function createStarburst(data, colors, setKeyCallback) {
 
   function initializeBreadcrumbTrail() {
     // Add the svg area.
-    var trail = d3.select("#sequence").append("svg:svg")
-      .attr("width", width)
-      .attr("height", 50)
-      .attr("id", "trail");
+    var trail = d3.select("#sequence").append("svg:svg").attr("id", "trail");
+
+    if (breadcrumbOrientation === 'vertical') {
+      trail.attr("width", 300).attr("height", height);
+    } else {
+      trail.attr("width", width).attr("height", 50);
+    }
+
     // Add the label at the end, for the percentage.
     trail.append("svg:text")
       .attr("id", "endlabel")
@@ -248,9 +254,17 @@ function createStarburst(data, colors, setKeyCallback) {
       });
 
     // Set position for entering and updating nodes.
-    g.attr("transform", function (d, i) {
-      return "translate(" + i * (b.w + b.s) + ", 0)";
-    });
+
+    if (breadcrumbOrientation === 'vertical') {
+      g.attr("transform", function (d, i) {
+        return "translate(100, " + i * (b.h + b.s) + ")";
+      });
+    } else {
+      g.attr("transform", function (d, i) {
+        return "translate(" + i * (b.w + b.s) + ", 0)";
+      });
+    }
+
 
     // Remove exiting nodes.
     g.exit().remove();
